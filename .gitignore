@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.venv/
+venv/
+
+# Gradio (local HTTPS cert)
+.gradio/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+gradio_output.log
+portal_output.log
+
+# Environment
+.env
+.env.local
+
+# Legacy v2 snapshot (not used by portal_api / root workflow)
+agentic_v2/
+
+# agentic_v3: runtime package only in repo (portal uses proofreader_workflow → soft_rules, prompt_snippets)
+agentic_v3/tests/
+agentic_v3/soft_rules_integration_plan.md
+agentic_v3/*.pdf
+
+# Test / cache
+.pytest_cache/

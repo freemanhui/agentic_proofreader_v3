@@ -1,0 +1,5 @@
+dashscope
+langgraph
+gradio
+langfuse
+python-dotenv

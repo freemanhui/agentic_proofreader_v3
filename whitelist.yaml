@@ -1,0 +1,101 @@
+# Whitelist — 白名单配置
+# ========================
+# 当 general agent 输出的 JSON 中，original 字段匹配以下任意规则时，
+# 该条目将被自动删除（不纳入最终结果）。
+#
+# 支持两种匹配模式：
+#
+# 1. whitelist (精确匹配)
+#    - 区分大小写的完全匹配
+#    - 格式：每个条目一行，使用 YAML list 格式
+#
+# 2. whitelist_regex (正则表达式匹配)
+#    - 通过 re.fullmatch() 进行正则匹配
+#    - 格式：每个条目一行，Python re.compile 兼容的正则表达式
+#    - 示例：r"\bper cent\b" 匹配单词边界内的 "per cent"
+#    - 示例：r"(?i)^chinese new year$" 大小写不敏感匹配
+#
+# Tips:
+# - 使用 (?i) 前缀实现大小写不敏感匹配（如 (?i)^chinese$）
+# - 使用 ^...$ 限定完整字符串匹配
+# - 使用 \b 表示单词边界
+
+whitelist:
+  # ── 数字（精确匹配版本，由 whitelist_regex 中的纯数字正则接管）──
+  # 以下是保留的精确匹配条目
+  - "Chinese"
+  - "Chinese New Year"
+  - "Cyber Security Act"
+  - "AFP"
+  - "Agence France-Presse"
+  - "TNS"
+  - "in order to"
+  - "crypto"
+  - "Cryptocurrency"
+  - "artificial intelligence"
+  - "Artificial Intelligence"
+  - "AI"
+  - "US"
+  - "United States"
+  - "United Nations"
+  - "the Ukraine"
+  - "collaboration"
+  - "transportation"
+  - "transport"
+  - "apartment"
+  - "flat"
+  - "will"
+  - "tell"
+  - "told"
+  - "said"
+  - "with"
+  - "assistance"
+  - "help"
+  - "South China Morning Post"
+  - "SCMP"
+  - "the SCMP"
+  - "unmanned"
+  - "CEO"
+  - "vice-president"
+  - "secretary general"
+  - "sq ft"
+  - "demonstrate"
+  - "supply chain"
+  - "lines"
+  - "cafe"
+  - "Handout"
+  - "movie"
+  - "per cent"
+  - "one"
+  - "two"
+  - "three"
+  - "four"
+  - "five"
+  - "six"
+  - "seven"
+  - "eight"
+  - "nine"
+  - "cryptocurrency"
+
+whitelist_regex:
+  # ── 纯数字（匹配 "1", "2", "3" ... "100" 等）──
+  - "^[0-9]+$"
+
+  # ── 大小写不敏感的 "chinese new year" 变体 ──
+  - "(?i)^chinese new year$"
+
+  # ── 大小写不敏感的 "crypto" 变体（覆盖 "crypto", "Crypto", "CRYPTO" 等）──
+  - "(?i)^crypto$"
+
+  # ── 匹配 "the" 开头的特定合成词（如 "the US", "the CEO" 等）
+  #    注意：需要精确控制，避免过度匹配
+  - "^the [A-Z]{2,}$"
+
+  # ── 以 "the" 开头、后面跟常见缩写/术语 ──
+  - "(?i)^the (SCMP|US|UK|UN|EU|NATO|CEO|CFO|CTO|COO)$"
+
+  # ── 数字 + 单位组合（如 "5 km", "100 sq ft", "3 years" 等）──
+  - "^[0-9]+ (sq ft|sq m|km|m|cm|mm|kg|g|lb|oz|years|months|weeks|days|hours|minutes|per cent|percent)$"
+
+  # ── 通用的序号匹配（1st, 2nd, 3rd, 4th, ...）──
+  - "^[0-9]+(st|nd|rd|th)$"
