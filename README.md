@@ -93,7 +93,7 @@ Graph (root workflow in `proofreader_workflow.py`):
                     └──────────────────────────────────────────────┘
 ```
 
-**Design choices:** The authoritative implementation plan (`soft_rules_integration_plan.md`) ships only in development checkouts alongside tests; this README summarizes the behaviours that landed in production code.
+**Design choices:** Behaviour matches the soft-rules integration plan; the per-task Markdown plan stays **local-only** (`agentic_v3/soft_rules_integration_plan.md` is not tracked—copy it separately if you want it beside this repo).
 
 - Exactly **one** new LangGraph node (`soft_rules`) after preprocessing; chunking and downstream behaviour stay the same when soft rules are off.
 - **Compile once** per article after preprocessing; **inject per module** for each chunk worker (no repeated source fetch/filter work per chunk).
