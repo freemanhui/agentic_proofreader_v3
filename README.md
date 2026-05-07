@@ -208,7 +208,7 @@ The five LLM specialists use **Qwen-Flash** via DashScope. **Soft rules** apply 
 
 ## Project structure
 
-Layout for the **root** workflow and `portal_api.py` (the `agentic_v2/` tree is a legacy snapshot and is **not** published in this repo; clone locally if you need it):
+Layout for the **root** workflow and `portal_api.py`:
 
 ```
 agentic_proofreader_v3/
@@ -296,10 +296,10 @@ python3 gradio_new.py
 cd agentic_proofreader_v3
 python3 portal_api.py
 # or
-uvicorn portal_api:app --host 0.0.0.0 --port 8000 --reload
+uvicorn portal_api:app --host 0.0.0.0 --port 8001 --reload
 ```
 
-- **Portal:** http://localhost:8000
+- **Portal:** http://localhost:8001
 - **API:** `POST /api/proofread` with JSON body:
 
 ```json

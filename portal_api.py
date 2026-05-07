@@ -1,5 +1,5 @@
 """
-ProofReader Rewrite — Portal API
+Agentic Proofreader v3 PoC — Portal API
 =================================
 FastAPI backend that wraps run_proofreader() and serves an interactive portal.
 
@@ -8,7 +8,7 @@ Routes:
   POST /api/proofread  →  Submit text, get structured change results
 
 Usage:
-    uvicorn portal_api:app --host 0.0.0.0 --port 8000 --reload
+    uvicorn portal_api:app --host 0.0.0.0 --port 8001 --reload
 Or:
     python portal_api.py
 """
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from proofreader_workflow import run_proofreader, AGENT_KEYS
 
-app = FastAPI(title="ProofReader Rewrite Portal")
+app = FastAPI(title="Agentic Proofreader v3 PoC")
 
 # ──────────────────────────────────────────────
 # HTML Template (embedded for simplicity)
@@ -39,7 +39,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ProofReader Rewrite — Editorial Portal</title>
+<title>Agentic Proofreader v3 PoC</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -171,7 +171,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <body>
 <div class="container" id="app">
   <header>
-    <h1>📝 ProofReader Rewrite</h1>
+    <h1>📝 Agentic Proofreader v3 PoC</h1>
     <p>Editorial Portal — Review, accept, or reject AI-suggested changes</p>
   </header>
 
@@ -657,4 +657,4 @@ def _parse_changes(raw: str) -> list:
 # ──────────────────────────────────────────────
 
 if __name__ == "__main__":
-    uvicorn.run("portal_api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("portal_api:app", host="0.0.0.0", port=8001, reload=True)
