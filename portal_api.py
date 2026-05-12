@@ -1,5 +1,5 @@
 """
-Agentic Proofreader v3 PoC — Portal API
+Agentic Proofreader + Soft Rules PoC — Portal API
 =================================
 FastAPI backend that wraps run_proofreader() and serves an interactive portal.
 
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from proofreader_workflow import run_proofreader, AGENT_KEYS
 
-app = FastAPI(title="Agentic Proofreader v3 PoC")
+app = FastAPI(title="Agentic Proofreader + Soft Rules PoC")
 
 # ──────────────────────────────────────────────
 # HTML Template (embedded for simplicity)
@@ -39,7 +39,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agentic Proofreader v3 PoC</title>
+<title>Agentic Proofreader + Soft Rules PoC</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -171,7 +171,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <body>
 <div class="container" id="app">
   <header>
-    <h1>📝 Agentic Proofreader v3 PoC</h1>
+    <h1>📝 Agentic Proofreader + Soft Rules PoC</h1>
     <p>Editorial Portal — Review, accept, or reject AI-suggested changes</p>
   </header>
 

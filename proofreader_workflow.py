@@ -60,7 +60,7 @@ from text_preprocessor import advanced_preprocessing
 load_dotenv(Path(__file__).resolve().parent / ".env")
 
 DASHSCOPE_API_KEY = os.environ.get("DASHSCOPE_API_KEY", "").strip()
-CHAT_MODEL = "qwen-flash"
+CHAT_MODEL = "qwen3.6-flash"
 DASHSCOPE_ENDPOINT = "https://dashscope-intl.aliyuncs.com/api/v1/services/aigc/text-generation/generation"
 
 # General-agent payload is huge (full text + six merged specialist outputs); DashScope returns HTTP 400

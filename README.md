@@ -202,7 +202,7 @@ Removes any change whose `original` field matches a whitelisted term (**exact** 
 | 📖 **Terminology** | `terminology-task-system-prompt.md` | Specialised terminology |
 | 📋 **Tansa** *(deterministic)* | `tansa_agent.py` | Rule-based matcher over **5,673** rows in `Tansa_guidelines_prod.csv` (no LLM) |
 
-The five LLM specialists use **Qwen-Flash** via DashScope. **Soft rules** apply only to those five, not to Tansa.
+The five LLM specialists use **Qwen 3.6 Flash** (`qwen3.6-flash`) via DashScope. **Soft rules** apply only to those five, not to Tansa.
 
 ---
 
@@ -251,7 +251,7 @@ agentic_proofreader_v3/
 ### Prerequisites
 
 - Python 3.11+
-- `DASHSCOPE_API_KEY` for Qwen-Flash
+- `DASHSCOPE_API_KEY` for Qwen 3.6 Flash
 
 ### Install
 
@@ -345,7 +345,7 @@ The workflow produces a **JSON array** of changes:
 
 | Variable | Purpose |
 |----------|---------|
-| `DASHSCOPE_API_KEY` | Required for LLM calls (Qwen-Flash) |
+| `DASHSCOPE_API_KEY` | Required for LLM calls (`qwen3.6-flash`) |
 | `PROOFREADER_GENERAL_USER_MAX_CHARS` | Optional cap on general-agent user payload size (default `200000`) |
 | `AGENTIC_SOFT_RULES_URL` | Optional HTTP(S) URL for soft-rule JSON |
 | `AGENTIC_SOFT_RULES_PATH` | Optional filesystem path for soft-rule JSON |
@@ -378,7 +378,7 @@ Six markdown files at the repo root configure the five specialists plus prompts 
 ## FAQ
 
 **Q: What LLM is used?**  
-A: Qwen-Flash via DashScope International (`dashscope-intl.aliyuncs.com`).
+A: Qwen 3.6 Flash via DashScope International (`dashscope-intl.aliyuncs.com`).
 
 **Q: What changed with soft rules?**  
 A: One new node after preprocessing compiles rules from the **full cleaned article**, then MQ workers attach **module-specific** snippets to the five LLM prompts only. Defaults stay the same when soft rules are off.
